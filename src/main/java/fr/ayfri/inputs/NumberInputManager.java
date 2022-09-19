@@ -38,16 +38,15 @@ public class NumberInputManager extends AbstractInputManager {
 	}
 
 	public double getDouble() {
-		double value;
+		double value = Double.NaN;
 		do {
 			System.out.print(message);
-			value = Double.parseDouble(System.console().readLine());
+			if (!scanner.hasNextDouble()) continue;
 
-			if (value < minimum) {
-				System.out.println(minimumErrorMessage);
-			} else if (value > maximum) {
-				System.out.println(maximumErrorMessage);
-			}
+			value = scanner.nextDouble();
+
+			if (value < minimum) System.out.println(minimumErrorMessage);
+			else if (value > maximum) System.out.println(maximumErrorMessage);
 		} while (value < minimum || value > maximum);
 
 		return value;
