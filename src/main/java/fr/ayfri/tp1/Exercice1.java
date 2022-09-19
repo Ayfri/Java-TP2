@@ -6,9 +6,9 @@ import fr.ayfri.inputs.NumberInputManager;
 /**
  * @author Pierre
  */
-public class Tp01 extends Exercice<NumberInputManager> {
-	public Tp01() {
-		title = "TP 1";
+public class Exercice1 extends Exercice<NumberInputManager> {
+	public Exercice1() {
+		title = "TP 1.1 : Racine d’un nombre";
 		description = """
 				Écrire un programme qui calcule la racine carrée de nombres fournis par l’utilisateur.
 				Ce programme devra afficher une erreur si l’utilisateur fournit des valeurs négatives, et s’arrêter lorsque l’utilisateur entre la valeur 0.
@@ -18,7 +18,7 @@ public class Tp01 extends Exercice<NumberInputManager> {
 	}
 
 	public static void main(String[] args) {
-		new Tp01().run();
+		new Exercice1().run();
 	}
 
 	@Override
