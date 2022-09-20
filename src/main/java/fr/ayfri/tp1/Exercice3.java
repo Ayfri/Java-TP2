@@ -54,25 +54,11 @@ public class Exercice3 extends Exercice<NumberInputManager> {
 		} while (restartInputManager.getChar() == 'O');
 	}
 
-	public long binaryToDecimal(long binary) {
-		var decimal = 0L;
-		var i = 0;
-		while (binary != 0) {
-			decimal += (binary % 10) * Math.pow(2, i);
-			++i;
-			binary /= 10;
-		}
-		return decimal;
+	private long binaryToDecimal(long binary) {
+		return Long.parseLong(Long.toString(binary), 2);
 	}
 
-	public long decimalToBinary(long decimal) {
-		var binary = 0L;
-		var n = 1L;
-		while (decimal != 0) {
-			binary += (decimal % 2) * n;
-			decimal /= 2;
-			n *= 10;
-		}
-		return binary;
+	private long decimalToBinary(long decimal) {
+		return Long.parseLong(Long.toBinaryString(decimal));
 	}
 }
