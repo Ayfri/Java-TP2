@@ -4,6 +4,7 @@ import fr.ayfri.inputs.CharInputManager;
 import fr.ayfri.tp1.Exercice1;
 import fr.ayfri.tp1.Exercice2;
 import fr.ayfri.tp1.Exercice3;
+import fr.ayfri.tp1.Exercice4;
 
 public class Main {
 	private static final char EXIT_CHAR = 'q';
@@ -13,6 +14,7 @@ public class Main {
 		menu.addExercice(new Exercice1());
 		menu.addExercice(new Exercice2());
 		menu.addExercice(new Exercice3());
+		menu.addExercice(new Exercice4());
 
 		var numberOfExercices = menu.getExerciceCount();
 		var validChars = new char[numberOfExercices + 1];
