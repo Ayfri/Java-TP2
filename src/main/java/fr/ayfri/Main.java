@@ -5,11 +5,14 @@ import fr.ayfri.tp1.Exercice1;
 import fr.ayfri.tp1.Exercice2;
 import fr.ayfri.tp1.Exercice3;
 import fr.ayfri.tp1.Exercice4;
+import org.jetbrains.annotations.NotNull;
 
-public class Main {
+public final class Main {
 	private static final char EXIT_CHAR = 'q';
 
-	public static void main(String[] args) {
+	private Main() {}
+
+	public static void main(String @NotNull [] args) {
 		var menu = new Menu();
 		menu.addExercice(new Exercice1());
 		menu.addExercice(new Exercice2());
@@ -30,10 +33,10 @@ public class Main {
 		do {
 			menu.showMenu();
 			input = inputManager.getChar();
-			if (input != EXIT_CHAR) {
+			if (EXIT_CHAR != input) {
 				menu.execute(input - 1 - '0');
 			}
-		} while (input != EXIT_CHAR);
+		} while (EXIT_CHAR != input);
 		System.out.println("Au revoir !");
 	}
 }

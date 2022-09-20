@@ -1,5 +1,7 @@
 package fr.ayfri;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,14 +9,10 @@ import java.util.List;
  * @author Pierre
  */
 public final class Menu {
-	private final ArrayList<Exercice> exercices = new ArrayList<>();
+	private final @NotNull List<Exercice> exercices = new ArrayList<>();
 
-	public void addExercice(Exercice exercice) {
+	public void addExercice(@NotNull Exercice exercice) {
 		exercices.add(exercice);
-	}
-
-	public List<Exercice> getExercices() {
-		return exercices;
 	}
 
 	public int getExerciceCount() {

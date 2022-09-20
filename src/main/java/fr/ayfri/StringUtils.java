@@ -1,6 +1,6 @@
 package fr.ayfri;
 
-public class StringUtils {
+public final class StringUtils {
 	private StringUtils() {
 	}
 
