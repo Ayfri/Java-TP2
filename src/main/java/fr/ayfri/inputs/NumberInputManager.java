@@ -15,10 +15,10 @@ public class NumberInputManager extends AbstractInputManager {
 		if (minimum == 0) {
 			minimumErrorMessage = "Erreur, la valeur ne peut pas être negative.";
 		} else {
-			minimumErrorMessage = "Erreur, le nombre doit être supérieur ou égal à " + minimum;
+			minimumErrorMessage = "Erreur, le nombre doit être supérieur ou égal à " + (long) minimum + ".";
 		}
 
-		maximumErrorMessage = "Erreur, le nombre doit être inférieur ou égal à " + maximum;
+		maximumErrorMessage = "Erreur, le nombre doit être inférieur ou égal à " + (long) maximum + ".";
 	}
 
 	public NumberInputManager(final String message) {
@@ -50,6 +50,10 @@ public class NumberInputManager extends AbstractInputManager {
 		} while (value < minimum || value > maximum);
 
 		return value;
+	}
+
+	public long getLong() {
+		return (long) getDouble();
 	}
 
 	public int getInt() {

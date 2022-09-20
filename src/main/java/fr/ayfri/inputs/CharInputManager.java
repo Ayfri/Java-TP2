@@ -1,10 +1,8 @@
 package fr.ayfri.inputs;
 
-import java.util.Scanner;
-
 public class CharInputManager extends AbstractInputManager {
+	private boolean caseInsensitive = false;
 	String invalidInputMessage;
-
 	char[] validInputs;
 
 	public CharInputManager(final String message, final char[] validInputs) {
@@ -39,5 +37,13 @@ public class CharInputManager extends AbstractInputManager {
 		}
 
 		return false;
+	}
+
+	public boolean isCaseInsensitive() {
+		return caseInsensitive;
+	}
+
+	public void setCaseInsensitive(final boolean caseInsensitive) {
+		this.caseInsensitive = caseInsensitive;
 	}
 }

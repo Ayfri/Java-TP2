@@ -23,10 +23,10 @@ public class Exercice1 extends Exercice<NumberInputManager> {
 
 	@Override
 	public void run() {
-		int a;
+		long a;
 
 		do {
-			a = inputManager.getInt();
+			a = inputManager.getLong();
 			if (a != 0) {
 				System.out.println("La racine carrée de " + a + " est " + getSqrt(a));
 			}
@@ -34,7 +34,7 @@ public class Exercice1 extends Exercice<NumberInputManager> {
 		System.out.println("Fin du programme.");
 	}
 
-	private double getSqrt(int a) {
+	private double getSqrt(long a) {
 		return Math.sqrt(a);
 	}
 }
