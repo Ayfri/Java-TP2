@@ -51,7 +51,8 @@ public class CharInputManager extends AbstractInputManager {
 		char value;
 		do {
 			System.out.print(message);
-			value = scanner.nextLine().charAt(0);
+			final var line = scanner.next();
+			value = line.length() == 0 ? '\0' : line.charAt(0);
 
 			if (isInvalidInput(value)) {
 				System.out.println(invalidInputMessage);

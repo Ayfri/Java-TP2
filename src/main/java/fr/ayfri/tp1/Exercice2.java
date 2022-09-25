@@ -28,7 +28,7 @@ public class Exercice2 extends Exercice<NumberInputManager> {
 				Afficher un arbre de Noel en utilisant les symboles = et *. La hauteur de l’arbre sera donnée par l’utilisateur.
 			""".stripIndent();
 
-		inputManager = new NumberInputManager("Hauteur de l'arbre : ", 0);
+		inputManager = new NumberInputManager("Hauteur de l'arbre : ", 2);
 	}
 
 	/**

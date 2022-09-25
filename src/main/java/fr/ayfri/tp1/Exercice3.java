@@ -21,9 +21,9 @@ public class Exercice3 extends Exercice<NumberInputManager> {
 	public Exercice3() {
 		title = "TP 1.3 : Nombre binaire";
 		description = """
-			Écrire un programme permettant de :
-				– Transformer un nombre binaire vers son équivalent décimale
-			    – Transformer un nombre décimal en binaire
+				Écrire un programme permettant de :
+					– Transformer un nombre binaire vers son équivalent décimale
+				    – Transformer un nombre décimal en binaire
 			""".stripIndent();
 
 		inputManager = new NumberInputManager("Rentrer votre choix : ", 0);

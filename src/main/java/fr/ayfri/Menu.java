@@ -41,9 +41,8 @@ public final class Menu {
 		System.out.println("Menu de sélection d'exercice :");
 		for (int i = 0, exercicesSize = exercices.size(); i < exercicesSize; i++) {
 			final var exercice = exercices.get(i);
-			System.out.printf("%d - %s :%n%s", i + 1, exercice.getTitle(), exercice.getDescription());
+			System.out.printf("%d - %s :%n%s\n", i + 1, exercice.getTitle(), exercice.getDescription());
 		}
-		System.out.println();
 	}
 
 	/**
