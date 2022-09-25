@@ -59,4 +59,5 @@ public class NumberInputManager extends AbstractInputManager {
 	public int getInt() {
 		return (int) getDouble();
 	}
+
 }

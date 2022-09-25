@@ -4,8 +4,8 @@ public final class StringUtils {
 	private StringUtils() {
 	}
 
-	public static String formatNumber(final String string, final int length) {
-		return string.length() > length ? string.substring(0, length) : padNumber(string, length);
+	public static String formatNumberRequiredLength(final String number, final int length) {
+		return number.length() > length ? number.substring(0, length) : padNumber(number, length);
 	}
 
 	public static String padNumber(final String number, final int length) {

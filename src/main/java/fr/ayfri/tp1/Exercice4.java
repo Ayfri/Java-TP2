@@ -4,8 +4,6 @@ import fr.ayfri.Exercice;
 import fr.ayfri.StringUtils;
 import fr.ayfri.inputs.NumberInputManager;
 
-import java.util.Arrays;
-
 /**
  * @author Pierre
  */
@@ -35,8 +33,8 @@ public class Exercice4 extends Exercice<NumberInputManager> {
 	}
 
 	private String getFormattedSum(final int n) {
-		var sum = getSum(n);
-		return StringUtils.formatNumber(String.valueOf(sum), RESULT_STRING_LENGTH);
+		final var sum = getSum(n);
+		return StringUtils.formatNumberRequiredLength(String.valueOf(sum), RESULT_STRING_LENGTH);
 	}
 
 	@Override
