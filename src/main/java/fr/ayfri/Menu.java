@@ -15,10 +15,6 @@ public final class Menu {
 		exercices.add(exercice);
 	}
 
-	public int getExerciceCount() {
-		return exercices.size();
-	}
-
 	public void execute(int index) {
 		exercices.get(index).run();
 	}
@@ -30,5 +26,9 @@ public final class Menu {
 			System.out.printf("%d - %s :%n%s", i + 1, exercice.getTitle(), exercice.getDescription());
 		}
 		System.out.println();
+	}
+
+	public int getExerciceCount() {
+		return exercices.size();
 	}
 }

@@ -14,31 +14,31 @@ public final class Main {
 	private Main() {}
 
 	public static void main(String @NotNull [] args) {
-		var menu = new Menu();
+		final var menu = new Menu();
 		menu.addExercice(new Exercice1());
 		menu.addExercice(new Exercice2());
 		menu.addExercice(new Exercice3());
 		menu.addExercice(new Exercice4());
 		menu.addExercice(new Exercice5());
 
-		var numberOfExercices = menu.getExerciceCount();
-		var validChars = new char[numberOfExercices + 1];
+		final var numberOfExercices = menu.getExerciceCount();
+		final var validChars = new char[numberOfExercices + 1];
 		validChars[0] = EXIT_CHAR;
 
-		for (var i = 0; i < numberOfExercices; i++) {
+		for (int i = 0; i < numberOfExercices; i++) {
 			validChars[i + 1] = String.valueOf(i + 1).charAt(0);
 		}
 
-		var inputManager = new CharInputManager("Entrez le numéro de l'exercice à exécuter (q pour quitter): ", "Numéro d'exercice invalide.", validChars);
+		final var inputManager = new CharInputManager("Entrez le numéro de l'exercice à exécuter (q pour quitter): ", "Numéro d'exercice invalide.", validChars);
 
 		char input;
 		do {
 			menu.showMenu();
 			input = inputManager.getChar();
-			if (EXIT_CHAR != input) {
+			if (input != EXIT_CHAR) {
 				menu.execute(input - 1 - '0');
 			}
-		} while (EXIT_CHAR != input);
+		} while (input != EXIT_CHAR);
 		System.out.println("Au revoir !");
 	}
 }

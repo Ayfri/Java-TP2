@@ -1,11 +1,15 @@
 package fr.ayfri.inputs;
 
 public class NumberInputManager extends AbstractInputManager {
-	String minimumErrorMessage;
+	double maximum;
 	String maximumErrorMessage;
 
 	double minimum;
-	double maximum;
+	String minimumErrorMessage;
+
+	public NumberInputManager(final String message) {
+		this(message, Double.MIN_VALUE, Double.MAX_VALUE);
+	}
 
 	public NumberInputManager(final String message, final double minimum, final double maximum) {
 		this.message = message;
@@ -21,10 +25,6 @@ public class NumberInputManager extends AbstractInputManager {
 		maximumErrorMessage = "Erreur, le nombre doit être inférieur ou égal à " + (long) maximum + ".";
 	}
 
-	public NumberInputManager(final String message) {
-		this(message, Double.MIN_VALUE, Double.MAX_VALUE);
-	}
-
 	public NumberInputManager(final String message, double minimum) {
 		this(message, minimum, Double.MAX_VALUE);
 	}
@@ -35,6 +35,10 @@ public class NumberInputManager extends AbstractInputManager {
 		this.maximum = maximum;
 		this.minimumErrorMessage = minimumErrorMessage;
 		this.maximumErrorMessage = maximumErrorMessage;
+	}
+
+	public int getInt() {
+		return (int) getDouble();
 	}
 
 	public double getDouble() {
@@ -55,9 +59,4 @@ public class NumberInputManager extends AbstractInputManager {
 	public long getLong() {
 		return (long) getDouble();
 	}
-
-	public int getInt() {
-		return (int) getDouble();
-	}
-
 }

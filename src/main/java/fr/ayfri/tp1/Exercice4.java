@@ -13,8 +13,8 @@ public class Exercice4 extends Exercice<NumberInputManager> {
 	public Exercice4() {
 		title = "TP 1.4 : Suite";
 		description = """
-			Calculer la somme des n premiers termes de la suite
-			Un = Un-1 + 1 / n avec n > 0 et U1 = 1
+				Calculer la somme des n premiers termes de la suite
+				Un = Un-1 + 1 / n avec n > 0 et U1 = 1
 			""".stripIndent();
 
 		inputManager = new NumberInputManager("Entrez le nombre de terme de la suite à calculer n avec n > 0 (0 pour terminer) : ", 0);
@@ -22,19 +22,6 @@ public class Exercice4 extends Exercice<NumberInputManager> {
 
 	public static void main(String[] args) {
 		new Exercice4().run();
-	}
-
-	private double getSum(final int n) {
-		var sum = 0d;
-		for (var i = 1; i <= n; i++) {
-			sum += 1d / i;
-		}
-		return sum;
-	}
-
-	private String getFormattedSum(final int n) {
-		final var sum = getSum(n);
-		return StringUtils.formatNumberRequiredLength(String.valueOf(sum), RESULT_STRING_LENGTH);
 	}
 
 	@Override
@@ -46,5 +33,18 @@ public class Exercice4 extends Exercice<NumberInputManager> {
 
 			System.out.println("La somme des " + input + " premiers termes de la suite est " + getFormattedSum(input));
 		} while (true);
+	}
+
+	private String getFormattedSum(final int n) {
+		final var sum = getSum(n);
+		return StringUtils.formatNumberRequiredLength(String.valueOf(sum), RESULT_STRING_LENGTH);
+	}
+
+	private double getSum(final int n) {
+		var sum = 0d;
+		for (var i = 1; i <= n; i++) {
+			sum += 1d / i;
+		}
+		return sum;
 	}
 }

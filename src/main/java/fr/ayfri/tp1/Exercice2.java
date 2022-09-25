@@ -26,19 +26,19 @@ public class Exercice2 extends Exercice<NumberInputManager> {
 
 	@Override
 	public void run() {
-		final var height = inputManager.getInt();
-		final var width = height * 2 - 1;
-		final var middle = width / 2;
+		final int height = inputManager.getInt();
+		final int width = height * 2 - 1;
+		final int middle = width / 2;
 		final var builder = new StringBuilder();
 
-		for (var i = 0; i < height; i++) {
+		for (int i = 0; i < height; i++) {
 			builder.append(SPACE.repeat(middle - i));
 			builder.append(FULL.repeat(i * 2 + 1));
 			builder.append(SPACE.repeat(middle - i));
 			builder.append("\n");
 		}
 
-		for (var i = 0; i < 2; i++) {
+		for (int i = 0; i < 2; i++) {
 			builder.append(SPACE.repeat(middle - i));
 			builder.append(FULL.repeat(i * 2 + 1));
 			builder.append(SPACE.repeat(middle - i));

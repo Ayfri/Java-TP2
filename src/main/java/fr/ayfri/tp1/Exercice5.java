@@ -1,7 +1,6 @@
 package fr.ayfri.tp1;
 
 import fr.ayfri.Exercice;
-import fr.ayfri.StringUtils;
 import fr.ayfri.inputs.NumberInputManager;
 
 import java.util.Arrays;
@@ -15,7 +14,7 @@ public class Exercice5 extends Exercice<NumberInputManager> {
 	public Exercice5() {
 		title = "TP 1.4 : Somme";
 		description = """
-			Écrire et tester une méthode de la classe TP qui calcule la somme des éléments d’un tableau de flottants.
+				Écrire et tester une méthode de la classe TP qui calcule la somme des éléments d’un tableau de flottants.
 			""".stripIndent();
 
 		inputManager = new NumberInputManager("Entrez la taille du tableau (0 pour terminer) : ", 0);

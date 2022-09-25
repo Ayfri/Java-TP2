@@ -11,6 +11,7 @@ public final class StringUtils {
 	public static String padNumber(final String number, final int length) {
 		return padLeft(number, length, '0');
 	}
+
 	public static String padLeft(final String string, final int length, final char padChar) {
 		return String.format("%" + length + "s", string).replace(' ', padChar);
 	}
