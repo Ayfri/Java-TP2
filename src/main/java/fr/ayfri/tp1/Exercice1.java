@@ -4,9 +4,14 @@ import fr.ayfri.Exercice;
 import fr.ayfri.inputs.NumberInputManager;
 
 /**
+ * Exercice 1 du TP 1.
+ *
  * @author Pierre
  */
 public class Exercice1 extends Exercice<NumberInputManager> {
+	/**
+	 * Constructeur de l'exercice 1.
+	 */
 	public Exercice1() {
 		title = "TP 1.1 : Racine d’un nombre";
 		description = """
@@ -17,6 +22,11 @@ public class Exercice1 extends Exercice<NumberInputManager> {
 		inputManager = new NumberInputManager("Entrez une valeur positive (0 pour quitter) : ", 0);
 	}
 
+	/**
+	 * Créé une instance de l'exercice 1 et l'exécute, permettant de tester l'exercice directement.
+	 *
+	 * @param args Les arguments de la ligne de commande (non utilisés).
+	 */
 	public static void main(String[] args) {
 		new Exercice1().run();
 	}
@@ -32,7 +42,14 @@ public class Exercice1 extends Exercice<NumberInputManager> {
 		} while (a != 0);
 	}
 
-	private double getSqrt(long a) {
-		return Math.sqrt(a);
+	/**
+	 * Calcule la racine carrée d'un nombre.
+	 *
+	 * @param number La valeur dont on veut la racine carrée.
+	 *
+	 * @return La racine carrée de {@code number}.
+	 */
+	private double getSqrt(long number) {
+		return Math.sqrt(number);
 	}
 }

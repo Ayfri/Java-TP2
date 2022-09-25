@@ -4,13 +4,24 @@ import fr.ayfri.Exercice;
 import fr.ayfri.inputs.NumberInputManager;
 
 /**
+ * Exercice 2 du TP 1.
+ *
  * @author Pierre
  */
 public class Exercice2 extends Exercice<NumberInputManager> {
 
+	/**
+	 * Constante pour le caractère "Rempli" pour le dessin du sapin.
+	 */
+	private static final String FULL = "*";
+	/**
+	 * Constante pour le caractère "Espace" pour le dessin du sapin.
+	 */
 	private static final String SPACE = "=";
-	public static final String FULL = "*";
 
+	/**
+	 * Constructeur de l'exercice 2.
+	 */
 	public Exercice2() {
 		title = "TP 1.2 : Arbre de noel";
 		description = """
@@ -20,6 +31,11 @@ public class Exercice2 extends Exercice<NumberInputManager> {
 		inputManager = new NumberInputManager("Hauteur de l'arbre : ", 0);
 	}
 
+	/**
+	 * Créé une instance de l'exercice 2 et l'exécute, permettant de tester l'exercice directement.
+	 *
+	 * @param args Les arguments de la ligne de commande (non utilisés).
+	 */
 	public static void main(String[] args) {
 		new Exercice2().run();
 	}

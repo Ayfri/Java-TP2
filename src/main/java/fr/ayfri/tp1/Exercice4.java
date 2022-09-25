@@ -1,15 +1,22 @@
 package fr.ayfri.tp1;
 
 import fr.ayfri.Exercice;
-import fr.ayfri.StringUtils;
 import fr.ayfri.inputs.NumberInputManager;
 
 /**
+ * Exercice 4 du TP 1.
+ *
  * @author Pierre
  */
 public class Exercice4 extends Exercice<NumberInputManager> {
-	private static final int RESULT_STRING_LENGTH = 6;
+	/**
+	 * Constante pour indiquer le nombre de décimales à afficher.
+	 */
+	private static final int RESULT_STRING_LENGTH = 4;
 
+	/**
+	 * Constructeur de l'exercice 4.
+	 */
 	public Exercice4() {
 		title = "TP 1.4 : Suite";
 		description = """
@@ -20,6 +27,11 @@ public class Exercice4 extends Exercice<NumberInputManager> {
 		inputManager = new NumberInputManager("Entrez le nombre de terme de la suite à calculer n avec n > 0 (0 pour terminer) : ", 0);
 	}
 
+	/**
+	 * Créé une instance de l'exercice 4 et l'exécute, permettant de tester l'exercice directement.
+	 *
+	 * @param args Les arguments de la ligne de commande (non utilisés).
+	 */
 	public static void main(String[] args) {
 		new Exercice4().run();
 	}
@@ -35,11 +47,24 @@ public class Exercice4 extends Exercice<NumberInputManager> {
 		} while (true);
 	}
 
+	/**
+	 * Formate la somme des n premiers termes de la suite.
+	 *
+	 * @param n Le nombre de termes de la suite à calculer.
+	 *
+	 * @return La somme des n premiers termes de la suite formatée avec {@link #RESULT_STRING_LENGTH} décimales.
+	 */
 	private String getFormattedSum(final int n) {
-		final var sum = getSum(n);
-		return StringUtils.formatNumberRequiredLength(String.valueOf(sum), RESULT_STRING_LENGTH);
+		return String.format("%." + RESULT_STRING_LENGTH + "f", getSum(n));
 	}
 
+	/**
+	 * Calcule la somme des n premiers termes de la suite.
+	 *
+	 * @param n Le nombre de termes de la suite à calculer.
+	 *
+	 * @return La somme des n premiers termes de la suite.
+	 */
 	private double getSum(final int n) {
 		var sum = 0d;
 		for (var i = 1; i <= n; i++) {

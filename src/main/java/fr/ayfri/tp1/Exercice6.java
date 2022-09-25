@@ -1,17 +1,19 @@
 package fr.ayfri.tp1;
 
 import fr.ayfri.Exercice;
-import fr.ayfri.StringUtils;
 import fr.ayfri.inputs.NumberInputManager;
 
 import java.util.Arrays;
 
 /**
+ * Exercice 6 du TP 1.
+ *
  * @author Pierre
  */
 public class Exercice6 extends Exercice<NumberInputManager> {
-	private final NumberInputManager valueInputManager = new NumberInputManager("");
-
+	/**
+	 * Le constructeur de l'exercice 6.
+	 */
 	public Exercice6() {
 		title = "TP 1.6 : Tableau";
 		description = """
@@ -21,6 +23,11 @@ public class Exercice6 extends Exercice<NumberInputManager> {
 		inputManager = new NumberInputManager("Entrez la taille du tableau (0 pour terminer) : ", 0);
 	}
 
+	/**
+	 * Créé une instance de l'exercice 6 et l'exécute, permettant de tester l'exercice directement.
+	 *
+	 * @param args Les arguments de la ligne de commande (non utilisés).
+	 */
 	public static void main(String[] args) {
 		new Exercice6().run();
 	}
@@ -33,8 +40,8 @@ public class Exercice6 extends Exercice<NumberInputManager> {
 
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
-				valueInputManager.setPrompt("Entrez la valeur de l'élément [" + (i + 1) + ", " + (j + 1) + "] : ");
-				array[i][j] = valueInputManager.getDouble();
+				inputManager.setPrompt("Entrez la valeur de l'élément [" + (i + 1) + ", " + (j + 1) + "] : ");
+				array[i][j] = inputManager.getDouble();
 			}
 		}
 

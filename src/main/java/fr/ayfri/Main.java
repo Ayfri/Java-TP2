@@ -9,11 +9,29 @@ import fr.ayfri.tp1.Exercice5;
 import fr.ayfri.tp1.Exercice6;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * La classe principale pour lancer le menu des exercices.
+ *
+ * @author Pierre
+ */
 public final class Main {
+	/**
+	 * Caractère pour quitter le menu de sélection d'exercices.
+	 */
 	private static final char EXIT_CHAR = 'q';
 
+	/**
+	 * Un constructeur privé pour empêcher l'instanciation de la classe, la méthode {@link Main#main} doit être utilisée.
+	 */
 	private Main() {}
 
+	/**
+	 * La méthode principale pour lancer le menu des exercices.
+	 * Crée un gestionnaire d'entrées de caractères et affiche le menu des exercices.
+	 * L'utilisateur peut choisir un exercice en entrant le numéro correspondant et l'exercice s'exécute.
+	 *
+	 * @param args Les arguments de la ligne de commande (non utilisés).
+	 */
 	public static void main(String @NotNull [] args) {
 		final var menu = new Menu();
 		menu.addExercice(new Exercice1());

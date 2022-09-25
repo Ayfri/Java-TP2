@@ -5,11 +5,19 @@ import fr.ayfri.inputs.CharInputManager;
 import fr.ayfri.inputs.NumberInputManager;
 
 /**
+ * Exercice 3 du TP 1.
+ *
  * @author Pierre
  */
 public class Exercice3 extends Exercice<NumberInputManager> {
+	/**
+	 * Un gestionnaire d'entrées pour recommencer ou non l'exercice.
+	 */
 	private final CharInputManager restartInputManager = new CharInputManager("Voulez-vous recommencer ? (O/N) ", new char[]{ 'O', 'N' });
 
+	/**
+	 * Constructeur de l'exercice 3.
+	 */
 	public Exercice3() {
 		title = "TP 1.3 : Nombre binaire";
 		description = """
@@ -22,6 +30,11 @@ public class Exercice3 extends Exercice<NumberInputManager> {
 		restartInputManager.setCaseInsensitive(true);
 	}
 
+	/**
+	 * Créé une instance de l'exercice 3 et l'exécute, permettant de tester l'exercice directement.
+	 *
+	 * @param args Les arguments de la ligne de commande (non utilisés).
+	 */
 	public static void main(String[] args) {
 		new Exercice3().run();
 	}
@@ -54,10 +67,24 @@ public class Exercice3 extends Exercice<NumberInputManager> {
 		} while (restartInputManager.getChar() == 'O');
 	}
 
+	/**
+	 * Convertit un nombre binaire en décimal.
+	 *
+	 * @param binary Le nombre binaire à convertir.
+	 *
+	 * @return Le nombre binaire converti en décimal.
+	 */
 	private long binaryToDecimal(long binary) {
 		return Long.parseLong(Long.toString(binary), 2);
 	}
 
+	/**
+	 * Convertit un nombre décimal en binaire.
+	 *
+	 * @param decimal Le nombre décimal à convertir.
+	 *
+	 * @return Le nombre décimal converti en binaire.
+	 */
 	private long decimalToBinary(long decimal) {
 		return Long.parseLong(Long.toBinaryString(decimal));
 	}

@@ -1,54 +1,103 @@
 package fr.ayfri.inputs;
 
+/**
+ * CharInputManager est une classe qui permet de demander un caractère à l'utilisateur.
+ *
+ * @author Pierre
+ */
 public class CharInputManager extends AbstractInputManager {
+	/**
+	 * Message à afficher si l'utilisateur entre un caractère invalide.
+	 */
+	private final String invalidInputMessage;
+	/**
+	 * La liste des caractères valides.
+	 */
+	private final char[] validInputs;
+	/**
+	 * Propriété pour savoir si le caractère peut ignorer la casse.
+	 */
 	private boolean caseInsensitive = false;
-	String invalidInputMessage;
-	char[] validInputs;
 
+	/**
+	 * Crée un nouveau gestionnaire d'entrées pour les caractères.
+	 *
+	 * @param message     Le message à afficher pour demander une entrée.
+	 * @param validInputs La liste des caractères valides.
+	 */
 	public CharInputManager(final String message, final char[] validInputs) {
 		this(message, "Erreur, la valeur entrée est invalide.", validInputs);
 	}
 
+	/**
+	 * Crée un nouveau gestionnaire d'entrées pour les caractères.
+	 *
+	 * @param message             Le message à afficher pour demander une entrée.
+	 * @param invalidInputMessage Le message à afficher si l'utilisateur entre un caractère invalide.
+	 * @param validInputs         La liste des caractères valides.
+	 */
 	public CharInputManager(final String message, final String invalidInputMessage, final char[] validInputs) {
 		this.message = message;
 		this.invalidInputMessage = invalidInputMessage;
 		this.validInputs = validInputs;
 	}
 
+	/**
+	 * Demande à l'utilisateur d'entrer un caractère et le retourne.
+	 *
+	 * @return Le caractère entré par l'utilisateur.
+	 */
 	public char getChar() {
 		char value;
 		do {
 			System.out.print(message);
 			value = scanner.nextLine().charAt(0);
 
-			if (!isValidInput(value)) {
+			if (isInvalidInput(value)) {
 				System.out.println(invalidInputMessage);
 			}
-		} while (!isValidInput(value));
+		} while (isInvalidInput(value));
 
 		return value;
 	}
 
-	public boolean isValidInput(char input) {
+	/**
+	 * Vérifie si l'entrée est valide.
+	 *
+	 * @param input Le caractère à vérifier.
+	 *
+	 * @return {@code true} si le caractère est valide, {@code false} sinon.
+	 */
+	public boolean isInvalidInput(char input) {
 		for (char validInput : validInputs) {
 			if (caseInsensitive) {
 				if (Character.toLowerCase(input) == Character.toLowerCase(validInput)) {
-					return true;
+					return false;
 				}
 			} else {
 				if (input == validInput) {
-					return true;
+					return false;
 				}
 			}
 		}
 
-		return false;
+		return true;
 	}
 
+	/**
+	 * Getter de la propriété pour savoir si le caractère peut ignorer la casse.
+	 *
+	 * @return La propriété pour savoir si le caractère peut ignorer la casse.
+	 */
 	public boolean isCaseInsensitive() {
 		return caseInsensitive;
 	}
 
+	/**
+	 * Setter de la propriété pour savoir si le caractère peut ignorer la casse.
+	 *
+	 * @param caseInsensitive La propriété pour savoir si le caractère peut ignorer la casse.
+	 */
 	public void setCaseInsensitive(final boolean caseInsensitive) {
 		this.caseInsensitive = caseInsensitive;
 	}
