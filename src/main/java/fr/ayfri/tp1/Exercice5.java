@@ -12,9 +12,10 @@ public class Exercice5 extends Exercice<NumberInputManager> {
 	private final NumberInputManager valueInputManager = new NumberInputManager("");
 
 	public Exercice5() {
-		title = "TP 1.4 : Somme";
+		title = "TP 1.5 : Somme";
 		description = """
 				Écrire et tester une méthode de la classe TP qui calcule la somme des éléments d’un tableau de flottants.
+				La taille du tableau sera fournie par l’utilisateur.
 			""".stripIndent();
 
 		inputManager = new NumberInputManager("Entrez la taille du tableau (0 pour terminer) : ", 0);

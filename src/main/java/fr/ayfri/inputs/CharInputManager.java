@@ -31,8 +31,14 @@ public class CharInputManager extends AbstractInputManager {
 
 	public boolean isValidInput(char input) {
 		for (char validInput : validInputs) {
-			if (input == validInput) {
-				return true;
+			if (caseInsensitive) {
+				if (Character.toLowerCase(input) == Character.toLowerCase(validInput)) {
+					return true;
+				}
+			} else {
+				if (input == validInput) {
+					return true;
+				}
 			}
 		}
 
