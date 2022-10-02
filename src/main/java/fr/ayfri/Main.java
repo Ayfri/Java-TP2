@@ -1,12 +1,12 @@
 package fr.ayfri;
 
 import fr.ayfri.inputs.CharInputManager;
-import fr.ayfri.tp1.Exercice1;
-import fr.ayfri.tp1.Exercice2;
-import fr.ayfri.tp1.Exercice3;
-import fr.ayfri.tp1.Exercice4;
-import fr.ayfri.tp1.Exercice5;
-import fr.ayfri.tp1.Exercice6;
+import fr.ayfri.tp2.Exercice1;
+import fr.ayfri.tp2.Exercice2;
+import fr.ayfri.tp2.Exercice3;
+import fr.ayfri.tp2.Exercice4;
+import fr.ayfri.tp2.Exercice5;
+import fr.ayfri.tp2.Exercice6;
 import org.jetbrains.annotations.NotNull;
 
 /**
