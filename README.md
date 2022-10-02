@@ -1,4 +1,4 @@
-# Java-TP1
+# Java-TP2
 
 My first set of exercices in Java for my school.
 
