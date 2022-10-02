@@ -1,19 +1,21 @@
 package fr.ayfri.inputs;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * CharInputManager est une classe qui permet de demander un caractère à l'utilisateur.
  *
  * @author Pierre
  */
-public class CharInputManager extends AbstractInputManager {
+public final class CharInputManager extends AbstractInputManager {
 	/**
 	 * Message à afficher si l'utilisateur entre un caractère invalide.
 	 */
-	private final String invalidInputMessage;
+	private final @NotNull String invalidInputMessage;
 	/**
 	 * La liste des caractères valides.
 	 */
-	private final char[] validInputs;
+	private final char @NotNull [] validInputs;
 	/**
 	 * Propriété pour savoir si le caractère peut ignorer la casse.
 	 */
@@ -25,7 +27,7 @@ public class CharInputManager extends AbstractInputManager {
 	 * @param message     Le message à afficher pour demander une entrée.
 	 * @param validInputs La liste des caractères valides.
 	 */
-	public CharInputManager(final String message, final char[] validInputs) {
+	public CharInputManager(final @NotNull String message, final char @NotNull [] validInputs) {
 		this(message, "Erreur, la valeur entrée est invalide.", validInputs);
 	}
 
@@ -36,7 +38,7 @@ public class CharInputManager extends AbstractInputManager {
 	 * @param invalidInputMessage Le message à afficher si l'utilisateur entre un caractère invalide.
 	 * @param validInputs         La liste des caractères valides.
 	 */
-	public CharInputManager(final String message, final String invalidInputMessage, final char[] validInputs) {
+	public CharInputManager(final @NotNull String message, final @NotNull String invalidInputMessage, final char @NotNull [] validInputs) {
 		this.message = message;
 		this.invalidInputMessage = invalidInputMessage;
 		this.validInputs = validInputs;

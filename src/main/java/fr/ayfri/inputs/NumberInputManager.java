@@ -1,37 +1,39 @@
 package fr.ayfri.inputs;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * NumberInputManager est un gestionnaire d'entrées qui permet de demander un nombre.
  *
  * @author Pierre
  */
-public class NumberInputManager extends AbstractInputManager {
+public final class NumberInputManager extends AbstractInputManager {
 	/**
 	 * Le nombre maximum.
 	 * Valeur par défaut : {@link Double#MAX_VALUE}
 	 */
-	double maximum;
+	private final double maximum;
 	/**
 	 * Le message d'erreur si l'utilisateur entre un nombre trop grand.
 	 */
-	String maximumErrorMessage;
+	private final @NotNull String maximumErrorMessage;
 
 	/**
 	 * Le nombre minimum.
 	 * Valeur par défaut : -{@link Double#MAX_VALUE}
 	 */
-	double minimum;
+	private final double minimum;
 	/**
 	 * Le message d'erreur si l'utilisateur entre un nombre trop petit.
 	 */
-	String minimumErrorMessage;
+	private final @NotNull String minimumErrorMessage;
 
 	/**
 	 * Crée un nouveau gestionnaire d'entrées pour les nombres.
 	 *
 	 * @param message Le message à afficher pour demander une entrée.
 	 */
-	public NumberInputManager(final String message) {
+	public NumberInputManager(final @NotNull String message) {
 		this(message, -Double.MAX_VALUE, Double.MAX_VALUE);
 	}
 
@@ -42,7 +44,7 @@ public class NumberInputManager extends AbstractInputManager {
 	 * @param minimum Le nombre minimum.
 	 * @param maximum Le nombre maximum.
 	 */
-	public NumberInputManager(final String message, final double minimum, final double maximum) {
+	public NumberInputManager(final @NotNull String message, final double minimum, final double maximum) {
 		this.message = message;
 		this.minimum = minimum;
 		this.maximum = maximum;
@@ -62,7 +64,7 @@ public class NumberInputManager extends AbstractInputManager {
 	 * @param message Le message à afficher pour demander une entrée.
 	 * @param minimum Le nombre minimum.
 	 */
-	public NumberInputManager(final String message, double minimum) {
+	public NumberInputManager(final @NotNull String message, double minimum) {
 		this(message, minimum, Double.MAX_VALUE);
 	}
 

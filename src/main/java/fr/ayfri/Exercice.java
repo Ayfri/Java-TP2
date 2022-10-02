@@ -1,6 +1,7 @@
 package fr.ayfri;
 
 import fr.ayfri.inputs.AbstractInputManager;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @param <T> Le type du gestionnaire d'entrée.
@@ -12,16 +13,16 @@ public abstract class Exercice<T extends AbstractInputManager> {
 	/**
 	 * La description de l'exercice.
 	 */
-	protected String description;
+	protected @NotNull String description;
 	/**
 	 * Le titre de l'exercice.
 	 */
-	protected String title;
+	protected @NotNull String title;
 
 	/**
 	 * Le gestionnaire d'entrées.
 	 */
-	public T inputManager;
+	public @NotNull T inputManager;
 
 	/**
 	 * La méthode pour exécuter l'exercice.
@@ -33,7 +34,7 @@ public abstract class Exercice<T extends AbstractInputManager> {
 	 *
 	 * @return La description de l'article.
 	 */
-	public String getDescription() {
+	public @NotNull String getDescription() {
 		return description;
 	}
 
@@ -42,7 +43,7 @@ public abstract class Exercice<T extends AbstractInputManager> {
 	 *
 	 * @return Le titre de l'article.
 	 */
-	public String getTitle() {
+	public @NotNull String getTitle() {
 		return title;
 	}
 }

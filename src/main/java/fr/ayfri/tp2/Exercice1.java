@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
  *
  * @author Pierre
  */
-public class Exercice1 extends Exercice<NumberInputManager> {
+public final class Exercice1 extends Exercice<NumberInputManager> {
 	/**
 	 * Constructeur de l'exercice 1.
 	 */

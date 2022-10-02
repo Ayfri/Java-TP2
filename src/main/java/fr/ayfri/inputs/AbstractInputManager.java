@@ -17,14 +17,14 @@ public abstract class AbstractInputManager {
 	/**
 	 * Le message à afficher pour demander une entrée.
 	 */
-	protected String message;
+	protected @NotNull String message;
 
 	/**
 	 * Setter du message.
 	 *
 	 * @param message Le message à afficher pour demander une entrée.
 	 */
-	public void setPrompt(final String message) {
+	public void setPrompt(final @NotNull String message) {
 		this.message = message;
 	}
 }
