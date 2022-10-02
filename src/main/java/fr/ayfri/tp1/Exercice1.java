@@ -2,6 +2,7 @@ package fr.ayfri.tp1;
 
 import fr.ayfri.Exercice;
 import fr.ayfri.inputs.NumberInputManager;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Exercice 1 du TP 1.
@@ -13,13 +14,31 @@ public class Exercice1 extends Exercice<NumberInputManager> {
 	 * Constructeur de l'exercice 1.
 	 */
 	public Exercice1() {
-		title = "TP 1.1 : Racine d’un nombre";
+		title = "TP 2.1 : Méthode d'Archimède 1/2";
 		description = """
-				Écrire un programme qui calcule la racine carrée de nombres fournis par l’utilisateur.
-				Ce programme devra afficher une erreur si l’utilisateur fournit des valeurs négatives, et s’arrêter lorsque l’utilisateur entre la valeur 0.
+				Créer une méthode Cn de la classe Archimede qui prend :
+					» X un double >=0
+					» Y un double >=0
+					La méthode calcule la valeur 2 * x * y / (x + y) : Utilisation Archimede.Cn(X, Y)
+				Tester la Méthode Archimede.Cn
+				Créer une méthode In de la classe Archimède qui prend :
+					» X un double >=0
+					» Y un double >=0
+					La méthode calcule la valeur sqrt(x * y) : Utilisation Archimede.In(X, Y)
+				Tester la Méthode Archimede.In
 			""".stripIndent();
 
-		inputManager = new NumberInputManager("Entrez une valeur positive (0 pour quitter) : ", 0);
+		inputManager = new NumberInputManager("Entrez une valeur positive : ", 0);
+	}
+
+	public static final class Archimede {
+		public double Cn(double x, double y) {
+			return 2 * x * y / (x + y);
+		}
+
+		public double In(double x, double y) {
+			return Math.sqrt(x * y);
+		}
 	}
 
 	/**
@@ -27,29 +46,18 @@ public class Exercice1 extends Exercice<NumberInputManager> {
 	 *
 	 * @param args Les arguments de la ligne de commande (non utilisés).
 	 */
-	public static void main(String[] args) {
+	public static void main(String @NotNull [] args) {
 		new Exercice1().run();
 	}
 
 	@Override
 	public void run() {
-		long a;
-		do {
-			a = inputManager.getLong();
-			if (a != 0) {
-				System.out.println("La racine carrée de " + a + " est " + getSqrt(a));
-			}
-		} while (a != 0);
-	}
+		final var archimede = new Archimede();
 
-	/**
-	 * Calcule la racine carrée d'un nombre.
-	 *
-	 * @param number La valeur dont on veut la racine carrée.
-	 *
-	 * @return La racine carrée de {@code number}.
-	 */
-	private double getSqrt(long number) {
-		return Math.sqrt(number);
+		final var x = inputManager.getInt();
+		final var y = inputManager.getInt();
+
+		System.out.printf("Cn(%d, %d) = %s%n", x, y, archimede.Cn(x, y));
+		System.out.printf("In(%d, %d) = %s%n", x, y, archimede.In(x, y));
 	}
 }
