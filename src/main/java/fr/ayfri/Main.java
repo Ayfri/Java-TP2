@@ -6,7 +6,6 @@ import fr.ayfri.tp2.Exercice2;
 import fr.ayfri.tp2.Exercice3;
 import fr.ayfri.tp2.Exercice4;
 import fr.ayfri.tp2.Exercice5;
-import fr.ayfri.tp2.Exercice6;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -39,7 +38,6 @@ public final class Main {
 		menu.addExercice(new Exercice3());
 		menu.addExercice(new Exercice4());
 		menu.addExercice(new Exercice5());
-		menu.addExercice(new Exercice6());
 
 		final var numberOfExercices = menu.getExerciceCount();
 		final var validChars = new char[numberOfExercices + 1];
