@@ -12,7 +12,7 @@ public final class NumberInputManager extends AbstractInputManager {
 	 * Le nombre maximum.
 	 * Valeur par défaut : {@link Double#MAX_VALUE}
 	 */
-	private final double maximum;
+	private double maximum;
 	/**
 	 * Le message d'erreur si l'utilisateur entre un nombre trop grand.
 	 */
@@ -22,7 +22,7 @@ public final class NumberInputManager extends AbstractInputManager {
 	 * Le nombre minimum.
 	 * Valeur par défaut : -{@link Double#MAX_VALUE}
 	 */
-	private final double minimum;
+	private double minimum;
 	/**
 	 * Le message d'erreur si l'utilisateur entre un nombre trop petit.
 	 */
@@ -52,10 +52,10 @@ public final class NumberInputManager extends AbstractInputManager {
 		if (minimum == 0) {
 			minimumErrorMessage = "Erreur, la valeur ne peut pas être negative.";
 		} else {
-			minimumErrorMessage = "Erreur, le nombre doit être supérieur ou égal à " + (long) minimum + ".";
+			minimumErrorMessage = "Erreur, le nombre doit être supérieur ou égal à %s.";
 		}
 
-		maximumErrorMessage = "Erreur, le nombre doit être inférieur ou égal à " + (long) maximum + ".";
+		maximumErrorMessage = "Erreur, le nombre doit être inférieur ou égal à %s.";
 	}
 
 	/**
@@ -90,8 +90,8 @@ public final class NumberInputManager extends AbstractInputManager {
 
 			value = scanner.nextDouble();
 
-			if (value < minimum) System.out.println(minimumErrorMessage);
-			else if (value > maximum) System.out.println(maximumErrorMessage);
+			if (value < minimum) System.out.printf(minimumErrorMessage + "\n", minimum);
+			else if (value > maximum) System.out.printf(maximumErrorMessage + "\n", maximum);
 		} while (value < minimum || value > maximum);
 
 		return value;
@@ -104,5 +104,31 @@ public final class NumberInputManager extends AbstractInputManager {
 	 */
 	public long getLong() {
 		return (long) getDouble();
+	}
+
+	/**
+	 * Setter du nombre minimum.
+	 * @param minimum Le nombre minimum.
+	 */
+	public void setMinimum(double minimum) {
+		this.minimum = minimum;
+	}
+
+	/**
+	 * Setter du nombre maximum.
+	 * @param maximum Le nombre maximum.
+	 */
+	public void setMaximum(double maximum) {
+		this.maximum = maximum;
+	}
+
+	/**
+	 * Setter pour les deux nombres minimum et maximum.
+	 * @param minimum Le nombre minimum.
+	 * @param maximum Le nombre maximum.
+	 */
+	public void setMinMax(double minimum, double maximum) {
+		this.minimum = minimum;
+		this.maximum = maximum;
 	}
 }
