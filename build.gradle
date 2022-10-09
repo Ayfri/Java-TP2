@@ -1,26 +1,30 @@
 plugins {
-    id 'java'
+	id 'org.openjfx.javafxplugin' version '0.0.13'
+	id 'application'
 }
 
-group 'fr.ayfri'
-version '1.0-SNAPSHOT'
-
 repositories {
-    mavenCentral()
+	mavenCentral()
 }
 
 dependencies {
-    compileOnly 'org.jetbrains:annotations:19.0.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-}
-
-test {
-    useJUnitPlatform()
+	compileOnly 'org.jetbrains:annotations:23.0.0'
 }
 
 java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(18))
-    }
+	toolchain {
+		languageVersion.set(JavaLanguageVersion.of(19))
+	}
 }
+
+javafx {
+	modules = ['javafx.controls', 'javafx.fxml']
+	version = "18.0.2"
+}
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+compileJava.options.encoding = 'UTF-8'
+mainClassName = 'fr.ayfri.gui.App'
