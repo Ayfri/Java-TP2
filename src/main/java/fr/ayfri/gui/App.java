@@ -10,6 +10,8 @@ import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 
 public class App extends Application {
+	public static boolean isGui = false;
+
 	public static void main(final String[] args) {
 		launch(args);
 	}
@@ -21,9 +23,9 @@ public class App extends Application {
 		primaryStage.show();
 		primaryStage.setScene(scene);
 
-		var menu = new Menu(primaryStage);
+		final var menu = new Menu(primaryStage);
 		menu.show();
 
-		AbstractInputManager.setIsGui(true, menu);
+		AbstractInputManager.setMenu(menu);
 	}
 }

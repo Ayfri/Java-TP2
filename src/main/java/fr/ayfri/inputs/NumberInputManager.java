@@ -1,5 +1,6 @@
 package fr.ayfri.inputs;
 
+import fr.ayfri.gui.App;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -49,11 +50,8 @@ public final class NumberInputManager extends AbstractInputManager {
 		this.minimum = minimum;
 		this.maximum = maximum;
 
-		if (minimum == 0) {
-			minimumErrorMessage = "Erreur, la valeur ne peut pas être negative.";
-		} else {
-			minimumErrorMessage = "Erreur, le nombre doit être supérieur ou égal à %s.";
-		}
+		if (minimum == 0) minimumErrorMessage = "Erreur, la valeur ne peut pas être negative.";
+		else minimumErrorMessage = "Erreur, le nombre doit être supérieur ou égal à %s.";
 
 		maximumErrorMessage = "Erreur, le nombre doit être inférieur ou égal à %s.";
 	}
@@ -83,7 +81,7 @@ public final class NumberInputManager extends AbstractInputManager {
 	 * @return Le nombre entré par l'utilisateur.
 	 */
 	public long getLong() {
-		return isGui ? menu.longPrompt(message, minimum, maximum) : (long) getDouble();
+		return App.isGui ? menu.longPrompt(message, minimum, maximum) : (long) getDouble();
 	}
 
 	/**
@@ -92,9 +90,7 @@ public final class NumberInputManager extends AbstractInputManager {
 	 * @return Le nombre entré par l'utilisateur.
 	 */
 	public double getDouble() {
-		if (isGui) {
-			return menu.doublePrompt(message, minimum, maximum);
-		}
+		if (App.isGui) return menu.doublePrompt(message, minimum, maximum);
 
 		double value = Double.NaN;
 		do {

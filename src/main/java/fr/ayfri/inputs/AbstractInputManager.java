@@ -11,7 +11,6 @@ import java.util.Scanner;
  * @author Pierre
  */
 public abstract class AbstractInputManager {
-	protected static boolean isGui = false;
 	protected static Menu menu;
 
 	/**
@@ -23,8 +22,7 @@ public abstract class AbstractInputManager {
 	 */
 	protected @NotNull String message;
 
-	public static void setIsGui(final boolean isGui, final @NotNull Menu menu) {
-		AbstractInputManager.isGui = isGui;
+	public static void setMenu(final @NotNull Menu menu) {
 		AbstractInputManager.menu = menu;
 	}
 

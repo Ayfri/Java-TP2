@@ -81,8 +81,8 @@ public final class Menu extends VBox {
 	public String stringPrompt(final String message, final int minLength, final int maxLength) {
 		try {
 			final var dialog = new StringPrompt(message, minLength, maxLength);
-			final var result = dialog.showAndWait();
-			return result.orElse("");
+			final var optionalResult = dialog.showAndWait();
+			return optionalResult.orElse("");
 		} catch (final Exception e) {
 			e.printStackTrace();
 			return "";

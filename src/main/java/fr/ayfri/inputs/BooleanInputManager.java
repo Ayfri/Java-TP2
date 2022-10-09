@@ -1,5 +1,6 @@
 package fr.ayfri.inputs;
 
+import fr.ayfri.gui.App;
 import org.jetbrains.annotations.NotNull;
 
 public class BooleanInputManager extends AbstractInputManager {
@@ -8,9 +9,7 @@ public class BooleanInputManager extends AbstractInputManager {
 	}
 
 	public boolean getBoolean() {
-		if (isGui) {
-			return menu.booleanPrompt(message);
-		}
+		if (App.isGui) return menu.booleanPrompt(message);
 
 		boolean result = false;
 		boolean validInput = false;

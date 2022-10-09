@@ -1,5 +1,6 @@
 package fr.ayfri.inputs;
 
+import fr.ayfri.gui.App;
 import org.jetbrains.annotations.NotNull;
 
 public class StringInputManager extends AbstractInputManager {
@@ -11,9 +12,7 @@ public class StringInputManager extends AbstractInputManager {
 	}
 
 	public @NotNull String getString() {
-		if (isGui) {
-			return menu.stringPrompt(message, minLength, maxLength);
-		}
+		if (App.isGui) return menu.stringPrompt(message, minLength, maxLength);
 
 		System.out.print(message);
 		return scanner.nextLine();

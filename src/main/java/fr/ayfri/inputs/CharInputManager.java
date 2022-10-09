@@ -1,5 +1,6 @@
 package fr.ayfri.inputs;
 
+import fr.ayfri.gui.App;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -50,9 +51,7 @@ public final class CharInputManager extends AbstractInputManager {
 	 * @return Le caractère entré par l'utilisateur.
 	 */
 	public char getChar() {
-		if (isGui) {
-			return menu.charPrompt(message, allowedChars, caseSensitive);
-		}
+		if (App.isGui) return menu.charPrompt(message, allowedChars, caseSensitive);
 
 		char value;
 		do {
@@ -60,9 +59,7 @@ public final class CharInputManager extends AbstractInputManager {
 			final var line = scanner.next();
 			value = line.length() == 0 ? '\0' : line.charAt(0);
 
-			if (isInvalidInput(value)) {
-				System.out.println(invalidInputMessage);
-			}
+			if (isInvalidInput(value)) System.out.println(invalidInputMessage);
 		} while (isInvalidInput(value));
 
 		return value;
@@ -78,14 +75,8 @@ public final class CharInputManager extends AbstractInputManager {
 	public boolean isInvalidInput(char input) {
 		for (char validInput : allowedChars) {
 			if (caseSensitive) {
-				if (Character.toLowerCase(input) == Character.toLowerCase(validInput)) {
-					return false;
-				}
-			} else {
-				if (input == validInput) {
-					return false;
-				}
-			}
+				if (Character.toLowerCase(input) == Character.toLowerCase(validInput)) return false;
+			} else if (input == validInput) return false;
 		}
 
 		return true;
