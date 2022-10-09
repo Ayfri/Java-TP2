@@ -4,8 +4,6 @@ import fr.ayfri.Exercice;
 import fr.ayfri.inputs.NumberInputManager;
 import org.jetbrains.annotations.NotNull;
 
-import java.math.BigInteger;
-
 /**
  * Exercice 3 du TP 1.
  *
@@ -21,7 +19,8 @@ public final class Exercice3 extends Exercice<NumberInputManager> {
 				Écrire une fonction MesImpôts qui prend en paramètre vos gaines de l’année et qui calcule vos impôts à payer en 2022.
 			""".stripIndent();
 
-		inputManager = new NumberInputManager("Entrez un nombre", 0);
+		inputManager = new NumberInputManager("Vos gains annuels : ", 0);
+		count++;
 	}
 
 	/**
@@ -35,27 +34,12 @@ public final class Exercice3 extends Exercice<NumberInputManager> {
 
 	@Override
 	public void run() {
-		var n = BigInteger.valueOf(inputManager.getInt());
-		var nFact = fact(n);
-		System.out.println(n + "! = " + nFact);
-
-		var first = BigInteger.valueOf(inputManager.getInt());
-		var second = BigInteger.valueOf(inputManager.getInt());
-		var combination = combination(first, second);
-		System.out.println(first + " parmi " + second + " = " + combination);
+		final var gains = inputManager.getDouble();
+		System.out.printf("Vous devez payer %.2f€ d'impôts.", calculate(gains));
 	}
 
-	private @NotNull BigInteger fact(BigInteger n) {
-		var result = BigInteger.ONE;
-		for (int i = 1; i <= n.intValue(); i++) {
-			result = result.multiply(BigInteger.valueOf(i));
-		}
-		return result;
-	}
-
-	private BigInteger combination(@NotNull BigInteger n, @NotNull BigInteger p) {
-		BigInteger result;
-		result = fact(n).divide(fact(p).multiply(fact(n.subtract(p))));
-		return result;
+	public static double calculate(final double gains) {
+		final var taux = (gains <= 10225) ? 0 : (gains <= 26070) ? 0.11 : (gains <= 74545) ? 0.3 : (gains <= 160336) ? 0.41 : 0.45;
+		return taux * gains;
 	}
 }

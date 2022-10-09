@@ -15,20 +15,20 @@ public final class CharInputManager extends AbstractInputManager {
 	/**
 	 * La liste des caractères valides.
 	 */
-	private final char @NotNull [] validInputs;
+	private final char @NotNull [] allowedChars;
 	/**
 	 * Propriété pour savoir si le caractère peut ignorer la casse.
 	 */
-	private boolean caseInsensitive = false;
+	private boolean caseSensitive = true;
 
 	/**
 	 * Crée un nouveau gestionnaire d'entrées pour les caractères.
 	 *
-	 * @param message     Le message à afficher pour demander une entrée.
-	 * @param validInputs La liste des caractères valides.
+	 * @param message      Le message à afficher pour demander une entrée.
+	 * @param allowedChars La liste des caractères valides.
 	 */
-	public CharInputManager(final @NotNull String message, final char @NotNull [] validInputs) {
-		this(message, "Erreur, la valeur entrée est invalide.", validInputs);
+	public CharInputManager(final @NotNull String message, final char @NotNull [] allowedChars) {
+		this(message, "Erreur, la valeur entrée est invalide.", allowedChars);
 	}
 
 	/**
@@ -36,12 +36,12 @@ public final class CharInputManager extends AbstractInputManager {
 	 *
 	 * @param message             Le message à afficher pour demander une entrée.
 	 * @param invalidInputMessage Le message à afficher si l'utilisateur entre un caractère invalide.
-	 * @param validInputs         La liste des caractères valides.
+	 * @param allowedChars        La liste des caractères valides.
 	 */
-	public CharInputManager(final @NotNull String message, final @NotNull String invalidInputMessage, final char @NotNull [] validInputs) {
+	public CharInputManager(final @NotNull String message, final @NotNull String invalidInputMessage, final char @NotNull [] allowedChars) {
 		this.message = message;
 		this.invalidInputMessage = invalidInputMessage;
-		this.validInputs = validInputs;
+		this.allowedChars = allowedChars;
 	}
 
 	/**
@@ -50,6 +50,10 @@ public final class CharInputManager extends AbstractInputManager {
 	 * @return Le caractère entré par l'utilisateur.
 	 */
 	public char getChar() {
+		if (isGui) {
+			return menu.charPrompt(message, allowedChars, caseSensitive);
+		}
+
 		char value;
 		do {
 			System.out.print(message);
@@ -72,8 +76,8 @@ public final class CharInputManager extends AbstractInputManager {
 	 * @return {@code true} si le caractère est valide, {@code false} sinon.
 	 */
 	public boolean isInvalidInput(char input) {
-		for (char validInput : validInputs) {
-			if (caseInsensitive) {
+		for (char validInput : allowedChars) {
+			if (caseSensitive) {
 				if (Character.toLowerCase(input) == Character.toLowerCase(validInput)) {
 					return false;
 				}
@@ -92,16 +96,16 @@ public final class CharInputManager extends AbstractInputManager {
 	 *
 	 * @return La propriété pour savoir si le caractère peut ignorer la casse.
 	 */
-	public boolean isCaseInsensitive() {
-		return caseInsensitive;
+	public boolean isCaseSensitive() {
+		return caseSensitive;
 	}
 
 	/**
 	 * Setter de la propriété pour savoir si le caractère peut ignorer la casse.
 	 *
-	 * @param caseInsensitive La propriété pour savoir si le caractère peut ignorer la casse.
+	 * @param caseSensitive La propriété pour savoir si le caractère peut ignorer la casse.
 	 */
-	public void setCaseInsensitive(final boolean caseInsensitive) {
-		this.caseInsensitive = caseInsensitive;
+	public void setCaseSensitive(final boolean caseSensitive) {
+		this.caseSensitive = caseSensitive;
 	}
 }

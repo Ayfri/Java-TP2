@@ -27,6 +27,7 @@ public final class Exercice2 extends Exercice<NumberInputManager> {
 			""".stripIndent();
 
 		inputManager = new NumberInputManager("Tester l'algorithme avec un entier positif : ", 0);
+		count++;
 	}
 
 	/**
@@ -41,7 +42,7 @@ public final class Exercice2 extends Exercice<NumberInputManager> {
 	public double @NotNull [] An(int n) {
 		final var archimede = new Exercice1.Archimede();
 		double x = 4;
-		double y = 2 * Math.sqrt(2);
+		double y = 2 * 1.4142135623730951;
 
 		for (int i = 1; i <= n; i++) {
 			x = archimede.Cn(x, y);

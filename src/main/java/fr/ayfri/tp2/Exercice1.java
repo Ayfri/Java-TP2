@@ -29,6 +29,7 @@ public final class Exercice1 extends Exercice<NumberInputManager> {
 			""".stripIndent();
 
 		inputManager = new NumberInputManager("Entrez une valeur positive : ", 0);
+		count++;
 	}
 
 	public static final class Archimede {

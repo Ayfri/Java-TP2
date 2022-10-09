@@ -48,7 +48,7 @@ public final class Main {
 		}
 
 		final var inputManager = new CharInputManager("Entrez le numéro de l'exercice à exécuter (q pour quitter): ", "Numéro d'exercice invalide.", validChars);
-
+		inputManager.setCaseSensitive(false);
 		char input;
 		do {
 			menu.showMenu();

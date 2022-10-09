@@ -23,6 +23,7 @@ public class Exercice4 extends Exercice<NumberInputManager> {
 			""".stripIndent();
 
 		inputManager = new NumberInputManager("Tester la fonction Cnp avec : ", 0);
+		count++;
 	}
 
 	/**
@@ -36,23 +37,31 @@ public class Exercice4 extends Exercice<NumberInputManager> {
 
 	@Override
 	public void run() {
-		final var n = inputManager.getInt();
-		final var p = inputManager.getInt();
+		final var n = inputManager.getLong();
+		inputManager.setMaximum(n);
+		final var p = inputManager.getLong();
 
-		System.out.printf("Cnp(%d, %d) = %s%n", n, p, Cnp(n, p));
+		System.out.printf("Cnp(%d, %d) = %.0f%n", n, p, cnp(n, p));
+
+		final var n2 = inputManager.getLong();
+		inputManager.setMaximum(n2);
+		final var p2 = inputManager.getLong();
+
+		System.out.printf("Cnp(%d, %d) = %f%n", n2, p2, cnp(n2, p2));
+		System.out.printf("Cnp(%d, %d) * Cnp(%d, %d) = %.0f%n", n, p, n2, p2, cnp(n, p) * cnp(n2, p2));
+
+		System.out.printf("Cnp(50, 5) * Cnp(11, 2) = %.0f%n", cnp(50, 5) * cnp(11, 2));
 	}
 
-	public static int Factoriel(int n) {
-		int result = 1;
-		for (int i = 1; i <= n; i++) {
+	private static double cnp(double n, double p) {
+		return factorial(n) / (factorial(p) * factorial(n - p));
+	}
+
+	private static double factorial(double n) {
+		var result = 1d;
+		for (var i = 1L; i <= n; i++) {
 			result *= i;
 		}
-		return result;
-	}
-
-	public static int Cnp(int n, int p) {
-		int result;
-		result = Factoriel(n) / (Factoriel(n - p) * Factoriel(p));
 		return result;
 	}
 }

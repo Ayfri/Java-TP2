@@ -8,6 +8,10 @@ public class BooleanInputManager extends AbstractInputManager {
 	}
 
 	public boolean getBoolean() {
+		if (isGui) {
+			return menu.booleanPrompt(message);
+		}
+
 		boolean result = false;
 		boolean validInput = false;
 		do {

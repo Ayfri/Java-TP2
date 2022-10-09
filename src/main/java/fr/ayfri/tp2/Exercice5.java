@@ -29,6 +29,7 @@ public class Exercice5 extends Exercice<NumberInputManager> {
 			""".stripIndent();
 
 		inputManager = new NumberInputManager("");
+		count++;
 	}
 
 	/**
@@ -53,6 +54,7 @@ public class Exercice5 extends Exercice<NumberInputManager> {
 			var computerPlaying = Math.random() < 0.5;
 			System.out.printf("%s commence !%n", computerPlaying ? "L'ordinateur" : playerName);
 
+			inputManager.setPrompt("Entrez le nombre d'allumettes à retirer (1, 2 ou 3) : ");
 			inputManager.setMinMax(1, 3);
 
 			while (game.getAllumettes() > 0) {
@@ -67,8 +69,9 @@ public class Exercice5 extends Exercice<NumberInputManager> {
 						break;
 					}
 				} else {
-					inputManager.setPrompt(String.format("%s %s enlève : ", game.displayAllumettes(), playerName));
+					System.out.printf("%s %s enlève : ", game.displayAllumettes(), playerName);
 					final var allumettesToTake = inputManager.getInt();
+					System.out.println();
 					if (game.play(allumettesToTake)) {
 						System.out.printf("%s a gagné !%nL'ordinateur a perdu >:)%n", playerName);
 						playerStatistics.win();
@@ -76,6 +79,7 @@ public class Exercice5 extends Exercice<NumberInputManager> {
 						break;
 					}
 				}
+
 				computerPlaying = !computerPlaying;
 			}
 

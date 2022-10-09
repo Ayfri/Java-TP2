@@ -74,7 +74,16 @@ public final class NumberInputManager extends AbstractInputManager {
 	 * @return Le nombre entré par l'utilisateur.
 	 */
 	public int getInt() {
-		return (int) getDouble();
+		return (int) getLong();
+	}
+
+	/**
+	 * Demande à l'utilisateur d'entrer un nombre et le retourne en tant que {@code long}.
+	 *
+	 * @return Le nombre entré par l'utilisateur.
+	 */
+	public long getLong() {
+		return isGui ? menu.longPrompt(message, minimum, maximum) : (long) getDouble();
 	}
 
 	/**
@@ -83,6 +92,10 @@ public final class NumberInputManager extends AbstractInputManager {
 	 * @return Le nombre entré par l'utilisateur.
 	 */
 	public double getDouble() {
+		if (isGui) {
+			return menu.doublePrompt(message, minimum, maximum);
+		}
+
 		double value = Double.NaN;
 		do {
 			System.out.print(message);
@@ -95,15 +108,6 @@ public final class NumberInputManager extends AbstractInputManager {
 		} while (value < minimum || value > maximum);
 
 		return value;
-	}
-
-	/**
-	 * Demande à l'utilisateur d'entrer un nombre et le retourne en tant que {@code long}.
-	 *
-	 * @return Le nombre entré par l'utilisateur.
-	 */
-	public long getLong() {
-		return (long) getDouble();
 	}
 
 	/**

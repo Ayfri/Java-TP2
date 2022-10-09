@@ -10,6 +10,13 @@ import org.jetbrains.annotations.NotNull;
  * La classe abstraite Exercice permet de créer des exercices.
  */
 public abstract class Exercice<T extends AbstractInputManager> {
+
+	protected static int count = 0;
+
+	public static int getCount() {
+		return count;
+	}
+
 	/**
 	 * La description de l'exercice.
 	 */
