@@ -1,6 +1,7 @@
 package fr.ayfri.tp2;
 
 import fr.ayfri.Exercice;
+import fr.ayfri.gui.App;
 import fr.ayfri.inputs.BooleanInputManager;
 import fr.ayfri.inputs.NumberInputManager;
 import fr.ayfri.inputs.StringInputManager;
@@ -57,9 +58,11 @@ public class Exercice5 extends Exercice<NumberInputManager> {
 			inputManager.setPrompt("Entrez le nombre d'allumettes à retirer (1, 2 ou 3) : ");
 			inputManager.setMinMax(1, 3);
 
+			final var playerStarted = !computerPlaying;
+
 			while (game.getAllumettes() > 0) {
 				if (computerPlaying) {
-					final var allumettesToTake = Math.min(3, game.getAllumettes());
+					final int allumettesToTake = playerStarted ? game.getAllumettes() % 4 : (int) (Math.random() * 3) + 1;
 					System.out.printf("%s %s enlève : %s%n", game.displayAllumettes(), "L'ordinateur", allumettesToTake);
 
 					if (game.play(allumettesToTake)) {
@@ -71,7 +74,7 @@ public class Exercice5 extends Exercice<NumberInputManager> {
 				} else {
 					System.out.printf("%s %s enlève : ", game.displayAllumettes(), playerName);
 					final var allumettesToTake = inputManager.getInt();
-					System.out.println();
+					if (App.isGui) System.out.println(allumettesToTake);
 					if (game.play(allumettesToTake)) {
 						System.out.printf("%s a gagné !%nL'ordinateur a perdu >:)%n", playerName);
 						playerStatistics.win();
