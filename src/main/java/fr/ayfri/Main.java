@@ -31,7 +31,7 @@ public final class Main {
 	 *
 	 * @param args Les arguments de la ligne de commande (non utilisés).
 	 */
-	public static void main(String @NotNull [] args) {
+	public static void main(final String @NotNull [] args) {
 		final var menu = new Menu();
 		menu.addExercice(new Exercice1());
 		menu.addExercice(new Exercice2());

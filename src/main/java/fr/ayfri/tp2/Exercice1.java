@@ -32,22 +32,12 @@ public final class Exercice1 extends Exercice<NumberInputManager> {
 		count++;
 	}
 
-	public static final class Archimede {
-		public double Cn(double x, double y) {
-			return 2 * x * y / (x + y);
-		}
-
-		public double In(double x, double y) {
-			return Math.sqrt(x * y);
-		}
-	}
-
 	/**
 	 * Créé une instance de l'exercice 1 et l'exécute, permettant de tester l'exercice directement.
 	 *
 	 * @param args Les arguments de la ligne de commande (non utilisés).
 	 */
-	public static void main(String @NotNull [] args) {
+	public static void main(final String @NotNull [] args) {
 		new Exercice1().run();
 	}
 
@@ -60,5 +50,36 @@ public final class Exercice1 extends Exercice<NumberInputManager> {
 
 		System.out.printf("Cn(%d, %d) = %s%n", x, y, archimede.Cn(x, y));
 		System.out.printf("In(%d, %d) = %s%n", x, y, archimede.In(x, y));
+	}
+
+	/**
+	 * Class Archimede qui contient les méthodes de l'exercice.
+	 *
+	 * @author Pierre
+	 */
+	public static final class Archimede {
+		/**
+		 * Méthode Cn.
+		 *
+		 * @param x La valeur x.
+		 * @param y La valeur y.
+		 *
+		 * @return La valeur de 2 * x * y / (x + y).
+		 */
+		public double Cn(final double x, final double y) {
+			return 2 * x * y / (x + y);
+		}
+
+		/**
+		 * Méthode In.
+		 *
+		 * @param x La valeur x.
+		 * @param y La valeur y.
+		 *
+		 * @return La valeur de sqrt(x * y).
+		 */
+		public double In(final double x, final double y) {
+			return Math.sqrt(x * y);
+		}
 	}
 }

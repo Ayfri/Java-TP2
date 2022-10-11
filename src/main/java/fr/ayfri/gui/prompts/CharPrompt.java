@@ -8,15 +8,23 @@ import javafx.scene.layout.VBox;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * @author pierr
+ * Dialogue pour demander un caractère.
+ *
+ * @author Pierre
  */
 public class CharPrompt extends Dialog<Character> {
+	/**
+	 * Crée et affiche un nouveau dialogue.
+	 * @param message Message à afficher.
+	 * @param allowedChars Caractères autorisés.
+	 * @param caseSensitive Sensibilité à la casse.
+	 */
 	public CharPrompt(final @NotNull String message, final char @NotNull [] allowedChars, final boolean caseSensitive) {
-		var content = new VBox(10);
+		final var content = new VBox(10);
 		content.setAlignment(Pos.CENTER);
 		content.setPadding(new Insets(15, 25, 15, 25));
 
-		var input = new TextField();
+		final var input = new TextField();
 		input.setOnAction(event -> {
 			if (input.getText().length() > 1) return;
 

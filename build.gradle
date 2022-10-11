@@ -13,7 +13,7 @@ dependencies {
 
 java {
 	toolchain {
-		languageVersion.set(JavaLanguageVersion.of(19))
+		languageVersion.set(JavaLanguageVersion.of(18))
 	}
 }
 
@@ -26,5 +26,8 @@ tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
 }
 
+tasks.getByName('run').configure {
+	main = 'fr.ayfri.gui.App'
+}
+
 compileJava.options.encoding = 'UTF-8'
-mainClassName = 'fr.ayfri.gui.App'

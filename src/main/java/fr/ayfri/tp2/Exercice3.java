@@ -24,12 +24,15 @@ public final class Exercice3 extends Exercice<NumberInputManager> {
 	}
 
 	/**
-	 * Créé une instance de l'exercice 3 et l'exécute, permettant de tester l'exercice directement.
+	 * Calcule les impôts à payer.
 	 *
-	 * @param args Les arguments de la ligne de commande (non utilisés).
+	 * @param gains Les gains de l'année.
+	 *
+	 * @return Les impôts à payer.
 	 */
-	public static void main(String @NotNull [] args) {
-		new Exercice3().run();
+	public static double calculate(final double gains) {
+		final var taux = (gains <= 10225) ? 0 : (gains <= 26070) ? 0.11 : (gains <= 74545) ? 0.3 : (gains <= 160336) ? 0.41 : 0.45;
+		return taux * gains;
 	}
 
 	@Override
@@ -38,8 +41,12 @@ public final class Exercice3 extends Exercice<NumberInputManager> {
 		System.out.printf("Vous devez payer %.2f€ d'impôts.", calculate(gains));
 	}
 
-	public static double calculate(final double gains) {
-		final var taux = (gains <= 10225) ? 0 : (gains <= 26070) ? 0.11 : (gains <= 74545) ? 0.3 : (gains <= 160336) ? 0.41 : 0.45;
-		return taux * gains;
+	/**
+	 * Créé une instance de l'exercice 3 et l'exécute, permettant de tester l'exercice directement.
+	 *
+	 * @param args Les arguments de la ligne de commande (non utilisés).
+	 */
+	public static void main(final String @NotNull [] args) {
+		new Exercice3().run();
 	}
 }

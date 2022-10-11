@@ -21,7 +21,7 @@ public final class Menu {
 	 *
 	 * @param exercice L'exercice à ajouter à la liste.
 	 */
-	public void addExercice(@NotNull Exercice<?> exercice) {
+	public void addExercice(@NotNull final Exercice<?> exercice) {
 		exercices.add(exercice);
 	}
 
@@ -30,7 +30,7 @@ public final class Menu {
 	 *
 	 * @param index L'index de l'exercice à exécuter.
 	 */
-	public void execute(int index) {
+	public void execute(final int index) {
 		exercices.get(index).run();
 	}
 

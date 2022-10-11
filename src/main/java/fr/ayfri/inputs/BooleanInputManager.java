@@ -3,16 +3,31 @@ package fr.ayfri.inputs;
 import fr.ayfri.gui.App;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * BooleanInputManager est une classe qui permet de demander un booléen à l'utilisateur.
+ *
+ * @author Pierre
+ */
 public class BooleanInputManager extends AbstractInputManager {
-	public BooleanInputManager(@NotNull String message) {
+	/**
+	 * Crée un nouveau gestionnaire d'entrées pour les booléens.
+	 *
+	 * @param message Le message à afficher pour demander une entrée.
+	 */
+	public BooleanInputManager(@NotNull final String message) {
 		this.message = message;
 	}
 
+	/**
+	 * Demande à l'utilisateur d'entrer un booléen et le retourne.
+	 *
+	 * @return Le booléen entré par l'utilisateur.
+	 */
 	public boolean getBoolean() {
-		if (App.isGui) return menu.booleanPrompt(message);
+		if (App.usingGUI) return menu.booleanPrompt(message);
 
-		boolean result = false;
-		boolean validInput = false;
+		var result = false;
+		var validInput = false;
 		do {
 			System.out.print(message);
 

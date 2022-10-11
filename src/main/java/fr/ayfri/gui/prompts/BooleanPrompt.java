@@ -8,27 +8,37 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Dialogue pour demander une réponse de type "Oui" ou "Non".
+ *
+ * @author Pierre
+ */
 public class BooleanPrompt extends Dialog<Button> {
+	/**
+	 * Crée et affiche un nouveau dialogue.
+	 *
+	 * @param message Message à afficher.
+	 */
 	public BooleanPrompt(final @NotNull String message) {
-		var content = new VBox(10);
+		final var content = new VBox(10);
 		content.setAlignment(Pos.CENTER);
 		content.setPadding(new Insets(15, 25, 15, 25));
 
-		var yes = new Button("Oui");
+		final var yes = new Button("Oui");
 		yes.setPadding(new Insets(10, 20, 10, 20));
 		yes.setOnAction(event -> {
 			setResult(yes);
 			close();
 		});
 
-		var no = new Button("Non");
+		final var no = new Button("Non");
 		no.setPadding(new Insets(10, 20, 10, 20));
 		no.setOnAction(event -> {
 			setResult(no);
 			close();
 		});
 
-		var buttons = new HBox(10);
+		final var buttons = new HBox(10);
 		buttons.setAlignment(Pos.CENTER);
 		buttons.getChildren().addAll(yes, no);
 		content.getChildren().addAll(buttons);

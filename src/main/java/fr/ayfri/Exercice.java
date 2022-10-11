@@ -4,15 +4,23 @@ import fr.ayfri.inputs.AbstractInputManager;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * La classe abstraite Exercice permettant de créer des exercices.
+ *
  * @param <T> Le type du gestionnaire d'entrée.
  *
  * @author Pierre
- * La classe abstraite Exercice permet de créer des exercices.
  */
 public abstract class Exercice<T extends AbstractInputManager> {
 
+	/**
+	 * Le nombre d'exercices.
+	 */
 	protected static int count = 0;
 
+	/**
+	 * Getter du nombre d'exercices.
+	 * @return Le nombre d'exercices.
+	 */
 	public static int getCount() {
 		return count;
 	}

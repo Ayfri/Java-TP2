@@ -11,7 +11,10 @@ import java.util.Scanner;
  * @author Pierre
  */
 public abstract class AbstractInputManager {
-	protected static Menu menu;
+	/**
+	 * Le menu graphique pour demander une entrée.
+	 */
+	protected static Menu menu = null;
 
 	/**
 	 * Le scanner pour lire les entrées.
@@ -20,8 +23,13 @@ public abstract class AbstractInputManager {
 	/**
 	 * Le message à afficher pour demander une entrée.
 	 */
-	protected @NotNull String message;
+	protected @NotNull String message = "";
 
+	/**
+	 * Setter du menu.
+	 *
+	 * @param menu Le menu de l'application.
+	 */
 	public static void setMenu(final @NotNull Menu menu) {
 		AbstractInputManager.menu = menu;
 	}

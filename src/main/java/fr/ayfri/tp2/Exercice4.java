@@ -27,12 +27,15 @@ public class Exercice4 extends Exercice<NumberInputManager> {
 	}
 
 	/**
-	 * Créé une instance de l'exercice 4 et l'exécute, permettant de tester l'exercice directement.
+	 * Calcule le factoriel de n.
 	 *
-	 * @param args Les arguments de la ligne de commande (non utilisés).
+	 * @param n Le nombre dont on veut le factoriel.
+	 * @param p Le nombre dont on veut le factoriel.
+	 *
+	 * @return Le factoriel de n.
 	 */
-	public static void main(String @NotNull [] args) {
-		new Exercice4().run();
+	private static double cnp(final double n, final double p) {
+		return factorial(n) / (factorial(p) * factorial(n - p));
 	}
 
 	@Override
@@ -53,15 +56,27 @@ public class Exercice4 extends Exercice<NumberInputManager> {
 		System.out.printf("Cnp(50, 5) * Cnp(11, 2) = %.0f%n", cnp(50, 5) * cnp(11, 2));
 	}
 
-	private static double cnp(double n, double p) {
-		return factorial(n) / (factorial(p) * factorial(n - p));
-	}
-
-	private static double factorial(double n) {
+	/**
+	 * Calcule le factoriel de n.
+	 *
+	 * @param n Le nombre dont on veut le factoriel.
+	 *
+	 * @return Le factoriel de n.
+	 */
+	private static double factorial(final double n) {
 		var result = 1d;
 		for (var i = 1L; i <= n; i++) {
 			result *= i;
 		}
 		return result;
+	}
+
+	/**
+	 * Créé une instance de l'exercice 4 et l'exécute, permettant de tester l'exercice directement.
+	 *
+	 * @param args Les arguments de la ligne de commande (non utilisés).
+	 */
+	public static void main(final String @NotNull [] args) {
+		new Exercice4().run();
 	}
 }

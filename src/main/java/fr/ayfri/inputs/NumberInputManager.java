@@ -62,7 +62,7 @@ public final class NumberInputManager extends AbstractInputManager {
 	 * @param message Le message à afficher pour demander une entrée.
 	 * @param minimum Le nombre minimum.
 	 */
-	public NumberInputManager(final @NotNull String message, double minimum) {
+	public NumberInputManager(final @NotNull String message, final double minimum) {
 		this(message, minimum, Double.MAX_VALUE);
 	}
 
@@ -76,12 +76,23 @@ public final class NumberInputManager extends AbstractInputManager {
 	}
 
 	/**
+	 * Setter pour les deux nombres minimum et maximum.
+	 *
+	 * @param minimum Le nombre minimum.
+	 * @param maximum Le nombre maximum.
+	 */
+	public void setMinMax(final double minimum, final double maximum) {
+		this.minimum = minimum;
+		this.maximum = maximum;
+	}
+
+	/**
 	 * Demande à l'utilisateur d'entrer un nombre et le retourne en tant que {@code long}.
 	 *
 	 * @return Le nombre entré par l'utilisateur.
 	 */
 	public long getLong() {
-		return App.isGui ? menu.longPrompt(message, minimum, maximum) : (long) getDouble();
+		return App.usingGUI ? menu.longPrompt(message, minimum, maximum) : (long) getDouble();
 	}
 
 	/**
@@ -90,7 +101,7 @@ public final class NumberInputManager extends AbstractInputManager {
 	 * @return Le nombre entré par l'utilisateur.
 	 */
 	public double getDouble() {
-		if (App.isGui) return menu.doublePrompt(message, minimum, maximum);
+		if (App.usingGUI) return menu.doublePrompt(message, minimum, maximum);
 
 		double value = Double.NaN;
 		do {
@@ -107,28 +118,20 @@ public final class NumberInputManager extends AbstractInputManager {
 	}
 
 	/**
-	 * Setter du nombre minimum.
-	 * @param minimum Le nombre minimum.
-	 */
-	public void setMinimum(double minimum) {
-		this.minimum = minimum;
-	}
-
-	/**
 	 * Setter du nombre maximum.
+	 *
 	 * @param maximum Le nombre maximum.
 	 */
-	public void setMaximum(double maximum) {
+	public void setMaximum(final double maximum) {
 		this.maximum = maximum;
 	}
 
 	/**
-	 * Setter pour les deux nombres minimum et maximum.
+	 * Setter du nombre minimum.
+	 *
 	 * @param minimum Le nombre minimum.
-	 * @param maximum Le nombre maximum.
 	 */
-	public void setMinMax(double minimum, double maximum) {
+	public void setMinimum(final double minimum) {
 		this.minimum = minimum;
-		this.maximum = maximum;
 	}
 }

@@ -8,17 +8,28 @@ import javafx.scene.layout.VBox;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * @author pierr
+ * Dialogue pour demander un nombre.
+ *
+ * @author Pierre
  */
 public class NumberPrompt extends Dialog<Double> {
+	/**
+	 * Propriété indiquant si le nombre est un entier.
+	 */
 	private boolean integers = false;
 
+	/**
+	 * Crée et affiche un nouveau dialogue.
+	 * @param message Message à afficher.
+	 * @param min Valeur minimale.
+	 * @param max Valeur maximale.
+	 */
 	public NumberPrompt(final @NotNull String message, final double min, final double max) {
-		var content = new VBox(10);
+		final var content = new VBox(10);
 		content.setAlignment(Pos.CENTER);
 		content.setPadding(new Insets(15, 25, 15, 25));
 
-		var input = new TextField();
+		final var input = new TextField();
 		input.setOnAction(event -> {
 			try {
 				final var number = Double.parseDouble(input.getText());
@@ -41,11 +52,8 @@ public class NumberPrompt extends Dialog<Double> {
 					number < min ||
 					number > max ||
 					(integers && number != (long) number)
-				) {
-					input.setStyle("-fx-text-fill: red;");
-				} else {
-					input.setStyle("-fx-text-fill: black;");
-				}
+				) input.setStyle("-fx-text-fill: red;");
+				else input.setStyle("-fx-text-fill: black;");
 			} catch (final NumberFormatException e) {
 				input.setStyle("-fx-text-fill: red;");
 			}

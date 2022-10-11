@@ -9,10 +9,24 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 
+/**
+ * Classe principale de l'application JavaFX.
+ *
+ * @author Pierre
+ */
 public class App extends Application {
-	public static boolean isGui = false;
+	/**
+	 * Propriété statique indiquant si l'application est en mode graphique ou non.
+	 */
+	public static boolean usingGUI = false;
 
+	/**
+	 * Méthode principale de l'application.
+	 *
+	 * @param args Arguments de la ligne de commande (non utilisés).
+	 */
 	public static void main(final String[] args) {
+		usingGUI = true;
 		launch(args);
 	}
 

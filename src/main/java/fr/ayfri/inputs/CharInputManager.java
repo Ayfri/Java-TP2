@@ -51,7 +51,7 @@ public final class CharInputManager extends AbstractInputManager {
 	 * @return Le caractère entré par l'utilisateur.
 	 */
 	public char getChar() {
-		if (App.isGui) return menu.charPrompt(message, allowedChars, caseSensitive);
+		if (App.usingGUI) return menu.charPrompt(message, allowedChars, caseSensitive);
 
 		char value;
 		do {
@@ -72,8 +72,8 @@ public final class CharInputManager extends AbstractInputManager {
 	 *
 	 * @return {@code true} si le caractère est valide, {@code false} sinon.
 	 */
-	public boolean isInvalidInput(char input) {
-		for (char validInput : allowedChars) {
+	public boolean isInvalidInput(final char input) {
+		for (final char validInput : allowedChars) {
 			if (caseSensitive) {
 				if (Character.toLowerCase(input) == Character.toLowerCase(validInput)) return false;
 			} else if (input == validInput) return false;

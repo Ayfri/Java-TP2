@@ -20,22 +20,52 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
 
+/**
+ * Controlleur de l'application graphique permettant de gérer les boutons.
+ *
+ * @author Pierre
+ */
 public class ButtonController implements Initializable {
+	/**
+	 * Le jeu de caractères utilisé pour lire les entrées.
+	 */
 	public static final Charset CHARSET = StandardCharsets.UTF_8;
+
+	/**
+	 * Le bouton pour l'exercice 1.
+	 */
 	@FXML
 	public Button button1;
+
+	/**
+	 * Le bouton pour l'exercice 2.
+	 */
 	@FXML
 	public Button button2;
+
+	/**
+	 * Le bouton pour l'exercice 3.
+	 */
 	@FXML
 	public Button button3;
+
+	/**
+	 * Le bouton pour l'exercice 4.
+	 */
 	@FXML
 	public Button button4;
+
+	/**
+	 * Le bouton pour l'exercice 5.
+	 */
 	@FXML
 	public Button button5;
 
+	/**
+	 * La zone de texte pour l'affichage des résultats.
+	 */
 	@FXML
 	public TextArea console;
-
 
 	@Override
 	public void initialize(final URL location, final ResourceBundle resources) {
@@ -48,27 +78,56 @@ public class ButtonController implements Initializable {
 		redirectStandardOut(console);
 	}
 
-	private void redirectStandardOut(TextArea area) {
+	/**
+	 * Redirige la sortie standard vers la zone de texte.
+	 *
+	 * @param area La zone de texte à rediriger.
+	 */
+	private void redirectStandardOut(final TextArea area) {
 		try {
-			PipedInputStream in = new PipedInputStream();
+			final PipedInputStream in = new PipedInputStream();
 			System.setOut(new PrintStream(new PipedOutputStream(in), true, StandardCharsets.UTF_8));
 
-			Thread thread = new Thread(new StreamReader(in, area));
+			final Thread thread = new Thread(new StreamReader(in, area));
 			thread.setDaemon(true);
 			thread.start();
-		} catch (IOException ex) {
+		} catch (final IOException ex) {
 			throw new UncheckedIOException(ex);
 		}
 	}
 
+	/**
+	 * Classe permettant de lire le flux d'entrée et de l'afficher dans la zone de texte.
+	 */
 	private static class StreamReader implements Runnable {
 
+		/**
+		 * Propriété pour le buffer de lecture.
+		 */
 		private final StringBuilder buffer = new StringBuilder();
+
+		/**
+		 * Propriété pour le flux d'entrée.
+		 */
 		private final BufferedReader reader;
+
+		/**
+		 * Propriété de la zone de texte à rediriger.
+		 */
 		private final TextArea textArea;
+
+		/**
+		 * Propriété notifiant si le flux est fermé.
+		 */
 		private boolean notify = true;
 
-		StreamReader(InputStream input, TextArea textArea) {
+		/**
+		 * Constructeur de la classe.
+		 *
+		 * @param input    Le flux d'entrée.
+		 * @param textArea La zone de texte à rediriger.
+		 */
+		StreamReader(final InputStream input, final TextArea textArea) {
 			this.reader = new BufferedReader(new InputStreamReader(input, CHARSET));
 			this.textArea = textArea;
 		}
@@ -86,11 +145,14 @@ public class ButtonController implements Initializable {
 						}
 					}
 				}
-			} catch (IOException ex) {
+			} catch (final IOException ex) {
 				throw new UncheckedIOException(ex);
 			}
 		}
 
+		/**
+		 * Ajoute le texte dans la zone de texte.
+		 */
 		private void appendTextToTextArea() {
 			synchronized (buffer) {
 				textArea.appendText(buffer.toString());

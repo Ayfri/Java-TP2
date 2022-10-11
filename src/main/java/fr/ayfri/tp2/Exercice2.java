@@ -35,11 +35,18 @@ public final class Exercice2 extends Exercice<NumberInputManager> {
 	 *
 	 * @param args Les arguments de la ligne de commande (non utilisés).
 	 */
-	public static void main(String @NotNull [] args) {
+	public static void main(final String @NotNull [] args) {
 		new Exercice2().run();
 	}
 
-	public double @NotNull [] An(int n) {
+	/**
+	 * Méthode An.
+	 *
+	 * @param n Nombre d'itérations.
+	 *
+	 * @return Un tableau contenant X et Y.
+	 */
+	public double @NotNull [] An(final int n) {
 		final var archimede = new Exercice1.Archimede();
 		double x = 4;
 		double y = 2 * 1.4142135623730951;

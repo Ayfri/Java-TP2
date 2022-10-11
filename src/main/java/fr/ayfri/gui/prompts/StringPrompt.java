@@ -8,15 +8,24 @@ import javafx.scene.layout.VBox;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * @author pierr
+ * Dialogue pour demander une chaîne de caractères.
+ *
+ * @author Pierre
  */
 public class StringPrompt extends Dialog<String> {
+	/**
+	 * Crée et affiche un nouveau dialogue.
+	 *
+	 * @param message   Message à afficher.
+	 * @param minLength Longueur minimale.
+	 * @param maxLength Longueur maximale.
+	 */
 	public StringPrompt(final @NotNull String message, final int minLength, final int maxLength) {
-		var content = new VBox(10);
+		final var content = new VBox(10);
 		content.setAlignment(Pos.CENTER);
 		content.setPadding(new Insets(15, 25, 15, 25));
 
-		var input = new TextField();
+		final var input = new TextField();
 		input.setOnAction(event -> {
 			final int length = input.getText().length();
 			if (length >= minLength && length <= maxLength) {
@@ -27,11 +36,8 @@ public class StringPrompt extends Dialog<String> {
 
 		input.setOnKeyReleased(event -> {
 			final int length = input.getText().length();
-			if (length < minLength || length > maxLength) {
-				input.setStyle("-fx-text-fill: red;");
-			} else {
-				input.setStyle("-fx-text-fill: black;");
-			}
+			if (length < minLength || length > maxLength) input.setStyle("-fx-text-fill: red;");
+			else input.setStyle("-fx-text-fill: black;");
 		});
 
 		content.getChildren().add(input);

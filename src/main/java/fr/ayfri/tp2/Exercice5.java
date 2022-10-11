@@ -13,9 +13,24 @@ import org.jetbrains.annotations.NotNull;
  * @author Pierre
  */
 public class Exercice5 extends Exercice<NumberInputManager> {
+	/**
+	 * Les statistiques de l'ordinateur.
+	 */
 	private final @NotNull Statistics computerStatistics = new Statistics();
+
+	/**
+	 * Les statistiques du joueur.
+	 */
 	private final @NotNull Statistics playerStatistics = new Statistics();
+
+	/**
+	 * L'inputManager pour savoir si le joueur veut rejouer.
+	 */
 	private final @NotNull BooleanInputManager replayInputManager = new BooleanInputManager("Voulez-vous rejouer ? (y/n) : ");
+
+	/**
+	 * L'inputManager pour récupérer le nom du joueur.
+	 */
 	private final @NotNull StringInputManager stringInputManager = new StringInputManager("Entrez votre nom : ");
 
 	/**
@@ -38,7 +53,7 @@ public class Exercice5 extends Exercice<NumberInputManager> {
 	 *
 	 * @param args Les arguments de la ligne de commande (non utilisés).
 	 */
-	public static void main(String @NotNull [] args) {
+	public static void main(final String @NotNull [] args) {
 		new Exercice5().run();
 	}
 
@@ -74,7 +89,7 @@ public class Exercice5 extends Exercice<NumberInputManager> {
 				} else {
 					System.out.printf("%s %s enlève : ", game.displayAllumettes(), playerName);
 					final var allumettesToTake = inputManager.getInt();
-					if (App.isGui) System.out.println(allumettesToTake);
+					if (App.usingGUI) System.out.println(allumettesToTake);
 					if (game.play(allumettesToTake)) {
 						System.out.printf("%s a gagné !%nL'ordinateur a perdu >:)%n", playerName);
 						playerStatistics.win();
@@ -97,42 +112,90 @@ public class Exercice5 extends Exercice<NumberInputManager> {
 		} while (replayInputManager.getBoolean());
 	}
 
+	/**
+	 * La classe Nim pour gérer le jeu.
+	 *
+	 * @author Pierre
+	 */
 	private static final class Nim {
+		/**
+		 * Le nombre d'allumettes au départ.
+		 */
 		private final int startingAllumettes;
+
+		/**
+		 * Le nombre d'allumettes actuel.
+		 */
 		private int allumettes;
 
-		public Nim(int allumettes) {
+		/**
+		 * Constructeur de la classe Nim.
+		 *
+		 * @param allumettes Le nombre d'allumettes au départ.
+		 */
+		public Nim(final int allumettes) {
 			this.allumettes = allumettes;
 			this.startingAllumettes = allumettes;
 		}
 
-		public boolean play(int allumettes) {
+		/**
+		 * Créé un String représentant les allumettes.
+		 *
+		 * @return Le String représentant les allumettes.
+		 */
+		public @NotNull String displayAllumettes() {
+			return String.format("%" + startingAllumettes + "s", "|".repeat(allumettes));
+		}
+
+		/**
+		 * Joue le nombre d'allumettes spécifié.
+		 *
+		 * @param allumettes Le nombre d'allumettes à jouer.
+		 *
+		 * @return Si le joueur a gagné.
+		 */
+		public boolean play(final int allumettes) {
 			this.allumettes -= allumettes;
 			return this.allumettes <= 0;
 		}
 
+		/**
+		 * Getter pour le nombre d'allumettes.
+		 *
+		 * @return Le nombre d'allumettes actuel.
+		 */
 		public int getAllumettes() {
 			return allumettes;
 		}
-
-		public @NotNull String displayAllumettes() {
-			return String.format("%" + startingAllumettes + "s", "|".repeat(allumettes));
-		}
 	}
 
+	/**
+	 * La classe Statistics pour gérer les statistiques.
+	 *
+	 * @author Pierre
+	 */
 	private static class Statistics {
-		private int wins;
-		private int losses;
 
-		public Statistics() {
-			wins = 0;
-			losses = 0;
-		}
+		/**
+		 * Le nombre de victoires.
+		 */
+		private int wins = 0;
 
+		/**
+		 * Le nombre de défaites.
+		 */
+		private int losses = 0;
+
+		/**
+		 * Incrémente le nombre de défaites.
+		 */
 		public void lose() {
 			losses++;
 		}
 
+		/**
+		 * Incrémente le nombre de victoires.
+		 */
 		public void win() {
 			wins++;
 		}
